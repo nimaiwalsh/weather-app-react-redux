@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
-import './App.css';
+import SearchBar from './containers/SearchBar';
+import { Container, Grid, Header } from 'semantic-ui-react';
 
 class App extends Component {
+  style = {
+    h1: {
+      marginTop: '2em',
+    },
+  }
   render() {
     return (
       <div className="App">
-        <Header dividing as="h1" color="red" className="App-title">Welcome to React</Header>
-        <p className="App-intro">
-          This is a boilder plate using React, Redux, React-Resux, React Router and Semantic-UI. 
-        </p>
+        <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column textAlign="center"> 
+                <Header as="h1" style={this.style.h1} color="blue">Weather forecast</Header>     
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row centered>
+              <Grid.Column style={{maxWidth: 500}}>      
+                <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </div>
     );
   }
