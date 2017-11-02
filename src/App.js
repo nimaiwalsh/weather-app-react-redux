@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './containers/SearchBar';
+import WeatherList from './containers/WeatherList'
 import { Container, Grid, Header } from 'semantic-ui-react';
 
 class App extends Component {
@@ -21,6 +22,11 @@ class App extends Component {
             <Grid.Row centered>
               <Grid.Column style={{maxWidth: 500}}>      
                 <SearchBar />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>      
+                <WeatherList />
               </Grid.Column>
             </Grid.Row>
           </Grid>
