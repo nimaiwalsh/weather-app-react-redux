@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
+
+import Chart from '../components/Chart'
 
 import { Table } from 'semantic-ui-react';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
@@ -8,17 +10,14 @@ class WeatherList extends Component {
   renderWeather(cityData) {
     const name = cityData.city.name
     const temps = cityData.list.map((listItem) => listItem.main.temp)
-    console.log(temps)
+    const press = cityData.list.map((listItem) => listItem.main.pressure)
+    const humid = cityData.list.map((listItem) => listItem.main.humidity)
     return (
       <Table.Row key={name}>
         <Table.Cell>{name}</Table.Cell>
-        <Table.Cell>
-          <Sparklines data={temps}>
-            <SparklinesLine color="red" />
-          </Sparklines>
-        </Table.Cell>
-        <Table.Cell>2</Table.Cell>
-        <Table.Cell>2</Table.Cell>
+        <Table.Cell><Chart data={temps} color='red' unit='&deg;' /></Table.Cell>
+        <Table.Cell><Chart data={press} color='green' unit='hPa'/></Table.Cell>
+        <Table.Cell><Chart data={humid} color='blue'unit='%' /></Table.Cell>
       </Table.Row>
     )
   }
