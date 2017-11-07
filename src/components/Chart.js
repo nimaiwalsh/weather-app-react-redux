@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
-import { Table, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 function average(data) {
   return (data.reduce((a, b) => a + b) / data.length).toFixed(1)

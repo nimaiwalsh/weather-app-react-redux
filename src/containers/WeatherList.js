@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Chart from '../components/Chart'
-
+import Chart from '../components/Chart';
+import GoogleMap from '../components/Map';
 import { Table } from 'semantic-ui-react';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
@@ -12,9 +11,10 @@ class WeatherList extends Component {
     const temps = cityData.list.map((listItem) => listItem.main.temp)
     const press = cityData.list.map((listItem) => listItem.main.pressure)
     const humid = cityData.list.map((listItem) => listItem.main.humidity)
+    const { lon, lat } = cityData.city.coord;
     return (
-      <Table.Row key={name}>
-        <Table.Cell>{name}</Table.Cell>
+      <Table.Row key={name} textAlign='center'>
+        <Table.Cell><GoogleMap lat={lat} lon={lon}/></Table.Cell>
         <Table.Cell><Chart data={temps} color='red' unit='&deg;' /></Table.Cell>
         <Table.Cell><Chart data={press} color='green' unit='hPa'/></Table.Cell>
         <Table.Cell><Chart data={humid} color='blue'unit='%' /></Table.Cell>
@@ -24,7 +24,7 @@ class WeatherList extends Component {
   
   render () {
     return (
-      <Table celled selectable>
+      <Table celled selectable columns={4}>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>City</Table.HeaderCell>

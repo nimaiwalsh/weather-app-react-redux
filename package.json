@@ -1,9 +1,11 @@
 {
   "name": "intermediate-redux",
+  "homepage": "https://nimaiwalsh.github.io/weather-app-react-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.17.0",
+    "gh-pages": "^1.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -16,6 +18,8 @@
     "semantic-ui-react": "^0.75.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
